@@ -103,11 +103,51 @@ Project Details
 </div>
 
 <div class="period">
-<div id="month"></div>
-  <text class="btn btn-sm">Period</text>
 
-<select id="date-dropdown"></select>
+  <text class="btn btn-sm">Period:</text>
+  <select id="ddlYears"></select>
+  <script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("ddlYears");
+ 
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+ 
+        //Loop and add the Year values to DropDownList.
+        for (var i = 2021; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>
+ 
+ 
 <select id="month" name="month"></select>
+
+<script>
+(function () {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var month_selected = (new Date).getMonth(); 
+    var option = '';
+    option = '<option>Month</option>';
+
+    for (let i = 0; i < months.length; i++) {
+        let month_number = (i + 1);
+
+        
+        let month = (month_number <= 9) ? '0' + month_number : month_number;
+
+       
+
+        let selected = (i === month_selected ? ' selected' : '');
+        option += '<option value="' + month + '"' + selected + '>' + months[i] + '</option>';
+    }
+    document.getElementById("month").innerHTML = option;
+})();
+</script>
 </div>
 
 <div class="container4">
